@@ -26,6 +26,7 @@
 		"@fastify/cors": "^11.1.0",
 		"@fastify/swagger": "^9.5.2",
 		"@scalar/fastify-api-reference": "^1.38.1",
+		"dotenv": "^17.2.3",
 		"drizzle-kit": "^0.31.6",
 		"drizzle-orm": "^0.44.7",
 		"drizzle-zod": "^0.8.3",

@@ -6,13 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+		"format": "biome format --write"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
+    "@tanstack/react-router": "^1.136.18",
+    "@tanstack/react-router-devtools": "^1.136.18",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.2",
+    "@tanstack/router-plugin": "^1.136.18",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
