@@ -8,11 +8,11 @@ import {
 	validatorCompiler,
 } from "fastify-type-provider-zod";
 import { env } from "./env";
+import { deleteWebhook } from "./routes/delete-webhook";
+import { getWebhook } from "./routes/get-webhook";
 import { listWebhooks } from "./routes/list-webhooks";
 
 const app = fastify();
-
-const port = 3000;
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
@@ -43,6 +43,8 @@ app.register(ScalarApiReference, {
 });
 
 app.register(listWebhooks);
+app.register(getWebhook);
+app.register(deleteWebhook);
 
 app.listen({ port: env.PORT, host: "0.0.0.0" }).then(() => {
 	console.log(`HTTP server running at http://localhost:${env.PORT}/`);
