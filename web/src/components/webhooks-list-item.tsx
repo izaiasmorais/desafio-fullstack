@@ -1,21 +1,33 @@
 import { Link } from "@tanstack/react-router";
 import { formatDistanceToNow } from "date-fns";
 import { Trash2Icon } from "lucide-react";
-import type { GetApiWebhooks200 } from "@/http/generated";
+import {
+	type GetApiWebhooks200,
+	getApiWebhooksQueryKey,
+	useDeleteApiWebhooksId,
+} from "@/http/generated";
+import { queryClient } from "@/routes/__root";
 import { Checkbox } from "./ui/checkbox";
 import { IconButton } from "./ui/icon-button";
 
 interface WebhooksListItemProps {
 	webhook: GetApiWebhooks200["webhooks"][number];
-	index: number
 }
 
-export function WebhooksListItem({ webhook, index }: WebhooksListItemProps) {
+export function WebhooksListItem({ webhook }: WebhooksListItemProps) {
+	const { mutate: deleteWebhookFn } = useDeleteApiWebhooksId({
+		mutation: {
+			onSuccess: () => {
+				queryClient.invalidateQueries({
+					queryKey: getApiWebhooksQueryKey(),
+				});
+			},
+		},
+	});
+
 	return (
 		<div className="group rounded-lg transition-colors duration-150 hover:bg-zinc-700/30">
-			<div className="flex items-center gap-3 px-4 py-2.5">
-{index}
-
+			<div className="flex items-start gap-3 px-4 py-2.5">
 				<Checkbox />
 
 				<Link
@@ -23,7 +35,7 @@ export function WebhooksListItem({ webhook, index }: WebhooksListItemProps) {
 					params={{ id: webhook.id }}
 					className="flex flex-1 min-w-0 items-start gap-3"
 				>
-					<span className="w-12 shrink-0 font-mono font-semibold text-zinc-300 text-right">
+					<span className="w-16 text-sm shrink-0 font-mono font-semibold text-zinc-300 text-right">
 						{webhook.method}
 					</span>
 
@@ -41,6 +53,8 @@ export function WebhooksListItem({ webhook, index }: WebhooksListItemProps) {
 				<IconButton
 					icon={<Trash2Icon className="size-3.5 text-zinc-400" />}
 					className="opacity-0 transition-opacity group-hover:opacity-100"
+					onClick={() => deleteWebhookFn({ id: webhook.id })}
+					aria-label="Delete webhook"
 				/>
 			</div>
 		</div>

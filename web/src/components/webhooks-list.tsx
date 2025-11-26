@@ -56,8 +56,8 @@ export function WebhooksList() {
 	return (
 		<div className="flex-1 overflow-y-auto">
 			<div className="space-y-1 p-2">
-				{webhooks.map((webhook, index) => {
-					return <WebhooksListItem key={webhook.id} webhook={webhook} index={index} />;
+				{webhooks.map((webhook) => {
+					return <WebhooksListItem key={webhook.id} webhook={webhook} />;
 				})}
 			</div>
 

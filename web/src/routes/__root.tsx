@@ -3,7 +3,7 @@ import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Sidebar } from "@/components/sidebar";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const RootLayout = () => (
 	<QueryClientProvider client={queryClient}>
