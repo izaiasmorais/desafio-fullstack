@@ -17,8 +17,8 @@ export function CodeBlock({
 
 	useEffect(() => {
 		if (code) {
-			codeToHtml(code, { lang: language, theme: "min-dark" }).then(
-				(parsed) => setParsedCode(parsed)
+			codeToHtml(code, { lang: language, theme: "min-dark" }).then((parsed) =>
+				setParsedCode(parsed),
 			);
 		}
 	}, [code, language]);
@@ -27,7 +27,7 @@ export function CodeBlock({
 		<div
 			className={twMerge(
 				"relative rounded-lg border border-zinc-700 overflow-x-auto",
-				className
+				className,
 			)}
 			{...props}
 		>

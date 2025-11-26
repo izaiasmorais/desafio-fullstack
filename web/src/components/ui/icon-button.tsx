@@ -20,9 +20,18 @@ interface IconButtonProps
 	icon: ReactNode;
 }
 
-export function IconButton({ icon, size, className, ...props }: IconButtonProps) {
+export function IconButton({
+	icon,
+	size,
+	className,
+	...props
+}: IconButtonProps) {
 	return (
-		<button type="button" className={iconButton({ size, className })} {...props}>
+		<button
+			type="button"
+			className={iconButton({ size, className })}
+			{...props}
+		>
 			{icon}
 		</button>
 	);

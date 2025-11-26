@@ -14,7 +14,7 @@ export function SectionDataTable({
 		<div
 			className={twMerge(
 				"overflow-hidden rounded-lg border border-zinc-700",
-				className
+				className,
 			)}
 			{...props}
 		>

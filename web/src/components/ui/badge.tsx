@@ -9,7 +9,7 @@ export function Badge({ className, ...props }: BadgeProps) {
 			className={twMerge(
 				"px-3 py-1 rounded-lg border font-mono text-sm font-semibold",
 				"border-zinc-600 bg-zinc-800 text-zinc-100",
-				className
+				className,
 			)}
 			{...props}
 		/>
