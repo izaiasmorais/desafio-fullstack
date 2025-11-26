@@ -7,12 +7,15 @@ import { IconButton } from "./ui/icon-button";
 
 interface WebhooksListItemProps {
 	webhook: GetApiWebhooks200["webhooks"][number];
+	index: number
 }
 
-export function WebhooksListItem({ webhook }: WebhooksListItemProps) {
+export function WebhooksListItem({ webhook, index }: WebhooksListItemProps) {
 	return (
 		<div className="group rounded-lg transition-colors duration-150 hover:bg-zinc-700/30">
 			<div className="flex items-center gap-3 px-4 py-2.5">
+{index}
+
 				<Checkbox />
 
 				<Link
